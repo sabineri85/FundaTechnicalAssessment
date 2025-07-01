@@ -1,11 +1,5 @@
-﻿using FundaTechnicalAssessment.Core.Extensions;
-using FundaTechnicalAssessment.Core.Interfaces;
+﻿using FundaTechnicalAssessment.Core.Interfaces;
 using FundaTechnicalAssessment.Core.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FundaTechnicalAssessment.Core.Services
 {

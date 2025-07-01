@@ -17,8 +17,4 @@
     <ProjectReference Include="..\FundaTechnicalAssessment.Core\FundaTechnicalAssessment.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>
