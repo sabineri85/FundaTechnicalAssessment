@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\FundaTechnicalAssesment_old\Src\FundaTechnicalAssessment.Core\FundaTechnicalAssessment.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\FundaTechnicalAssesment_old\Src\FundaTechnicalAssessment.ExternalIntegrations\FundaTechnicalAssessment.ExternalIntegrations.csproj" />
+    <ProjectReference Include="..\FundaTechnicalAssessment.Core\FundaTechnicalAssessment.Core.csproj" />
+    <ProjectReference Include="..\FundaTechnicalAssessment.ExternalIntegrations\FundaTechnicalAssessment.ExternalIntegrations.csproj" />
   </ItemGroup>
 
 </Project>
