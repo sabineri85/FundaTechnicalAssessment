@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace FundaTechnicalAssessment.ExternalIntegrations.Models
+﻿namespace FundaTechnicalAssessment.ExternalIntegrations.Models
 {
     public class PropertyDetailsResponse
     {

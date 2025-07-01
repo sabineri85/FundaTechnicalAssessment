@@ -1,9 +1,11 @@
 ﻿using FundaTechnicalAssessment.Core.Interfaces;
 using System;
+using Spectre.Console;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FundaTechnicalAssessment.Core.Model;
 
 namespace FundaTechnicalAssessment
 {
@@ -12,6 +14,7 @@ namespace FundaTechnicalAssessment
         private string keyReadGarden;
         public async Task RunAsync()
         {            
+            //TODO: remove app key from settings file
             var isValid = false;
             Console.WriteLine("Please type the name of a city in the Netherlands. If no value entered then Amsterdam will be used.");
             string lineReadCity = Console.ReadLine();
@@ -38,7 +41,25 @@ namespace FundaTechnicalAssessment
             if (String.IsNullOrEmpty(lineReadCity))
                 lineReadCity = "Amsterdam";
             var propertiesResult = await propertiesService.GetRankPropertiesByAgentAsync(lineReadCity.ToString(), hasGarden);
-            Console.WriteLine("");
+            OutputToConsole(propertiesResult);
+        }
+
+        private void OutputToConsole(IEnumerable<AgentPropertyGroup> agentPropertyGroups)
+        {
+            var table = new Table();
+            table.AddColumn("Agent ID");
+            table.AddColumn("Agent Name");
+            table.AddColumn("Property Count");
+                        
+            foreach (var agent in agentPropertyGroups)
+            {
+                table.AddRow(
+                    agent.AgentId.ToString(),
+                    agent.AgentName ?? string.Empty,
+                    agent.PropertyCount.ToString()
+                );
+            }
+            AnsiConsole.Write(table);
         }
     }
 

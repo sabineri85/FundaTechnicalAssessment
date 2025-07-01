@@ -16,8 +16,7 @@ namespace FundaTechnicalAssessment.Core.Extensions
                     PropertyCount = y.Count()
                 })
                 .OrderByDescending(z => z.PropertyCount)
-                .Take(_topRankingNumber);
-                
+                .Take(_topRankingNumber);                
         }
     }
 }
