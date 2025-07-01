@@ -32,7 +32,6 @@ namespace FundaTechnicalAssessment.Core.Services
                 pageNumber++;
             }
 
-
             return propertyObjectList;
         }
 

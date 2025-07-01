@@ -9,23 +9,36 @@ namespace FundaTechnicalAssessment
 {
     public class App(IPropertiesService propertiesService)
     {
+        private string keyReadGarden;
         public async Task RunAsync()
-        {
+        {            
             var isValid = false;
-            Console.WriteLine("Please type the name of a city in the Netherlands.");
-            ConsoleKeyInfo keyReadCity = System.Console.ReadKey();
-            ConsoleKeyInfo keyReadGarden = System.Console.ReadKey();
+            Console.WriteLine("Please type the name of a city in the Netherlands. If no value entered then Amsterdam will be used.");
+            string lineReadCity = Console.ReadLine();
+            
+            var lineReadGardenString = string.Empty;
+            
             do
             {
                 Console.WriteLine("With garden?: type y or n");
-                keyReadGarden = System.Console.ReadKey();
+                keyReadGarden = Console.ReadLine();
+                if (keyReadGarden is null)
+                    continue;
+                lineReadGardenString = keyReadGarden.ToString().ToLower();
+
+                if(lineReadGardenString.Equals("y") || lineReadGardenString.Equals("n"))
+                {
+                    isValid = true;
+                }
 
             } while (!isValid);
             
 
-            var hasGarden = true ? keyReadGarden.ToString().Equals("y") : keyReadGarden.ToString().Equals("n");
-
-            var propertiesResult = await propertiesService.GetRankPropertiesByAgentAsync(keyReadCity.ToString(), hasGarden);
+            var hasGarden = true ? lineReadGardenString.Equals("y") : keyReadGarden.Equals("n");
+            if (String.IsNullOrEmpty(lineReadCity))
+                lineReadCity = "Amsterdam";
+            var propertiesResult = await propertiesService.GetRankPropertiesByAgentAsync(lineReadCity.ToString(), hasGarden);
+            Console.WriteLine(propertiesResult.Take(10));
         }
     }
 

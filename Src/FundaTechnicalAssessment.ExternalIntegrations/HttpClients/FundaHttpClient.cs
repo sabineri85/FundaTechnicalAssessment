@@ -35,21 +35,23 @@ namespace FundaTechnicalAssessment.ExternalIntegrations.HttpClients
 
         public async Task<IEnumerable<PropertyListingsDto>> SearchPropertiesByParametersAsync(string queryParameters, int pageNumber)
         {
+            var policy = FundaRetryPolicy.GetRateLimitPolicy();
             var escapedUri = Uri.EscapeDataString(BuildQuery(queryParameters, pageNumber));
             var requestUri = new Uri(BuildRequestUrl(_propertySearchSettings.BaseUrl, _propertySearchSettings.ApiKey, escapedUri));
-            var requestMessage = new HttpRequestMessage()
+           
+            var response = await policy.ExecuteAsync(() => _httpClient.SendAsync(new HttpRequestMessage()
             {
                 Method = HttpMethod.Get,
                 RequestUri = requestUri
-            };
-            var response = await _httpClient.SendAsync(requestMessage);
+            }));
+                
             var content = await response.Content.ReadAsStringAsync();
             if(!response.IsSuccessStatusCode)
             {
                 _logger.LogError("Error retrieving properties when calling API. HttpStatusCode = {statusCode}  ResponseBody = {responseBody}",
                     response.StatusCode,
                     content);
-                //todo: throw appropriate error based on code
+                response.StatusCode.ThrowExceptionOnFailedCall();
             }
             var deserealisedResult = JsonSerializer.Deserialize<PropertyDetailsResponse>(content);
             if (deserealisedResult is null)

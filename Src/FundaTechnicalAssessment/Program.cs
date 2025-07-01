@@ -10,15 +10,16 @@ using Microsoft.Extensions.Http;
 using System.Configuration;
 
 var configuration = new ConfigurationBuilder()
-            .SetBasePath(AppContext.BaseDirectory)  // or Directory.GetCurrentDirectory()
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .Build();
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    .Build();
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
         // Register all services here
+        services.AddTransient<App>();
         services.AddHttpClient<IFundaListingsProvider, FundaHttpClient>();
         services.Configure<PropertySearchSettings>(configuration.GetSection(nameof(PropertySearchSettings)));
         services.AddScoped<IPropertiesService, PropertiesService>();       
