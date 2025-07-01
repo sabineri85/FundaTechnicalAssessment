@@ -1,4 +1,5 @@
-﻿using FundaTechnicalAssessment.Core.Interfaces;
+﻿using FundaTechnicalAssessment.Core.Extensions;
+using FundaTechnicalAssessment.Core.Interfaces;
 using FundaTechnicalAssessment.Core.Model;
 
 namespace FundaTechnicalAssessment.Core.Services
@@ -7,7 +8,7 @@ namespace FundaTechnicalAssessment.Core.Services
     {
         private const string _queryBase = "?type=koop&zo=/";
         private const string _gardenParameter = "/tuin";
-        public async Task<IEnumerable<PropertyListingsDto>> GetRankPropertiesByAgentAsync(string city, bool hasGarden)
+        public async Task<IEnumerable<AgentPropertyGroup>> GetRankPropertiesByAgentAsync(string city, bool hasGarden)
         {
             var pageNumber = 1;
             var builtQuery = AppendQueryParameters(city, hasGarden);
@@ -26,7 +27,7 @@ namespace FundaTechnicalAssessment.Core.Services
                 pageNumber++;
             }
 
-            return propertyObjectList;
+            return propertyObjectList.GroupAgentsByPropertiesForSale();
         }
 
         private string AppendQueryParameters(string city, bool hasGarden)

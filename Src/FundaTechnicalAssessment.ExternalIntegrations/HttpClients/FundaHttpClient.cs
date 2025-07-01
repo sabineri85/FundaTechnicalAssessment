@@ -33,10 +33,10 @@ namespace FundaTechnicalAssessment.ExternalIntegrations.HttpClients
             _httpClient.BaseAddress = new Uri(_propertySearchSettings.BaseUrl);
         }
 
-        public async Task<IEnumerable<PropertyListingsDto>> SearchPropertiesByParametersAsync(string queryParameters, int pageNumber)
+        public async Task<IEnumerable<PropertyListingsDto>> SearchPropertiesByParametersAsync(string builtParameters, int pageNumber)
         {
             var policy = FundaRetryPolicy.GetRateLimitPolicy();
-            var escapedUri = Uri.EscapeDataString(BuildQuery(queryParameters, pageNumber));
+            var escapedUri = Uri.EscapeDataString(BuildQuery(builtParameters, pageNumber));
             var requestUri = new Uri(BuildRequestUrl(_propertySearchSettings.BaseUrl, _propertySearchSettings.ApiKey, escapedUri));
            
             var response = await policy.ExecuteAsync(() => _httpClient.SendAsync(new HttpRequestMessage()
