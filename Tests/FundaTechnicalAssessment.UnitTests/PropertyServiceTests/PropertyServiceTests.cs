@@ -31,7 +31,7 @@ namespace FundaTechnicalAssessment.UnitTests.PropertyServiceTests
             _provider.SearchPropertiesByParametersAsync(Arg.Any<string>(), 1).Returns(listingsPage1);
             _provider.SearchPropertiesByParametersAsync(Arg.Any<string>(), 2).Returns(listingsPage2);
 
-            var result = await _service.GetRankPropertiesByAgentAsync("amsterdam", false);
+            var result = await _service.RankPropertiesByAgentAsync("amsterdam", false);
 
             var grouped = result.ToList();
             Assert.Equal(2, grouped.Count);
@@ -46,7 +46,7 @@ namespace FundaTechnicalAssessment.UnitTests.PropertyServiceTests
         {
             _provider.SearchPropertiesByParametersAsync(expectedQuery, 1).Returns(new List<PropertyListingsDto>());
 
-            await _service.GetRankPropertiesByAgentAsync("amsterdam", hasGarden);
+            await _service.RankPropertiesByAgentAsync("amsterdam", hasGarden);
 
             await _provider.Received(1).SearchPropertiesByParametersAsync(expectedQuery, 1);
         }
@@ -56,7 +56,7 @@ namespace FundaTechnicalAssessment.UnitTests.PropertyServiceTests
         {
             _provider.SearchPropertiesByParametersAsync(Arg.Any<string>(), 1).Returns(new List<PropertyListingsDto>());
 
-            var result = await _service.GetRankPropertiesByAgentAsync("utrecht", false);
+            var result = await _service.RankPropertiesByAgentAsync("utrecht", false);
 
             Assert.Empty(result);
             await _provider.Received(1).SearchPropertiesByParametersAsync(Arg.Any<string>(), 1);

@@ -34,7 +34,7 @@ namespace FundaTechnicalAssessment
             var hasGarden = true ? lineReadGardenString.Equals("y") : keyReadGarden.Equals("n");
             if (String.IsNullOrEmpty(lineReadCity))
                 lineReadCity = "Amsterdam";
-            var propertiesResult = await propertiesService.GetRankPropertiesByAgentAsync(lineReadCity.ToString(), hasGarden);
+            var propertiesResult = await propertiesService.RankPropertiesByAgentAsync(lineReadCity.ToString(), hasGarden);
             OutputToConsole(propertiesResult);
         }
 

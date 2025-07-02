@@ -4,6 +4,6 @@ namespace FundaTechnicalAssessment.Core.Interfaces
 {
     public interface IPropertiesService
     {
-        public Task<IEnumerable<AgentPropertyGroup>> GetRankPropertiesByAgentAsync(string city, bool hasGarden);
+        public Task<IEnumerable<AgentPropertyGroup>> RankPropertiesByAgentAsync(string city, bool hasGarden);
     }
 }

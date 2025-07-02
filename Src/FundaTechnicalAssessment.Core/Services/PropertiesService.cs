@@ -8,7 +8,7 @@ namespace FundaTechnicalAssessment.Core.Services
     {
         private const string _queryBase = "?type=koop&zo=/";
         private const string _gardenParameter = "/tuin";
-        public async Task<IEnumerable<AgentPropertyGroup>> GetRankPropertiesByAgentAsync(string city, bool hasGarden)
+        public async Task<IEnumerable<AgentPropertyGroup>> RankPropertiesByAgentAsync(string city, bool hasGarden)
         {
             var pageNumber = 1;
             var builtQuery = AppendQueryParameters(city, hasGarden);
