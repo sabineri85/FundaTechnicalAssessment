@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundaTechnicalAssessment.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundaTechnicalAssessment.ExternalIntegrations", "Src\FundaTechnicalAssessment.ExternalIntegrations\FundaTechnicalAssessment.ExternalIntegrations.csproj", "{7E14F03B-E212-D7C3-1F59-83B98B280DCF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0985A61D-A70B-4E35-97CD-8479471D7649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundaTechnicalAssessment.UnitTests", "Tests\FundaTechnicalAssessment.UnitTests\FundaTechnicalAssessment.UnitTests.csproj", "{CD68BD00-DAB1-44E8-86E9-D9AC51665151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{7E14F03B-E212-D7C3-1F59-83B98B280DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E14F03B-E212-D7C3-1F59-83B98B280DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E14F03B-E212-D7C3-1F59-83B98B280DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD68BD00-DAB1-44E8-86E9-D9AC51665151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD68BD00-DAB1-44E8-86E9-D9AC51665151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD68BD00-DAB1-44E8-86E9-D9AC51665151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD68BD00-DAB1-44E8-86E9-D9AC51665151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{DF7C7CE6-9227-4000-BD45-FDD2C33123C2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A0E3FC9E-BE0E-F29D-FA32-4E1B75E6D062} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7E14F03B-E212-D7C3-1F59-83B98B280DCF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{CD68BD00-DAB1-44E8-86E9-D9AC51665151} = {0985A61D-A70B-4E35-97CD-8479471D7649}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {799A2318-B234-4BB5-A1F8-FC76389993FE}

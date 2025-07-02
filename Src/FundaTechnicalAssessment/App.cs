@@ -1,11 +1,6 @@
 ﻿using FundaTechnicalAssessment.Core.Interfaces;
-using System;
-using Spectre.Console;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FundaTechnicalAssessment.Core.Model;
+using Spectre.Console;
 
 namespace FundaTechnicalAssessment
 {
