@@ -8,8 +8,7 @@ namespace FundaTechnicalAssessment
     {
         private string keyReadGarden;
         public async Task RunAsync()
-        {            
-            //TODO: remove app key from settings file
+        {
             var isValid = false;
             Console.WriteLine("Please type the name of a city in the Netherlands. If no value entered then Amsterdam will be used.");
             string lineReadCity = Console.ReadLine();
