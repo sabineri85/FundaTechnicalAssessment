@@ -7,6 +7,9 @@ This program meets the requirements of:
 - Including the option to filter properties that have a garden.
 - Allowing any city name to be searched for the same result.
 
+To run this, download the repo, replace the ApiKey value in the appsettings.json with a valid api key.
+This is a console application and after meeting the above requirements should run out the box.  
+
 ---
 
 ## What's Happening?
