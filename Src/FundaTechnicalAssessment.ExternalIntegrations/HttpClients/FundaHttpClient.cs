@@ -35,6 +35,7 @@ namespace FundaTechnicalAssessment.ExternalIntegrations.HttpClients
 
         public async Task<IEnumerable<PropertyListingsDto>> SearchPropertiesByParametersAsync(string builtParameters, int pageNumber)
         {
+            // Polly will handle retries, including unauthorised from rate limits
             var policy = FundaRetryPolicy.GetRateLimitPolicy();
             var escapedUri = Uri.EscapeDataString(BuildQuery(builtParameters, pageNumber));
             var requestUri = new Uri(BuildRequestUrl(_propertySearchSettings.BaseUrl, _propertySearchSettings.ApiKey, escapedUri));
@@ -51,6 +52,8 @@ namespace FundaTechnicalAssessment.ExternalIntegrations.HttpClients
                 _logger.LogError("Error retrieving properties when calling API. HttpStatusCode = {statusCode}  ResponseBody = {responseBody}",
                     response.StatusCode,
                     content);
+                // we want this to return the correct result or nothing. If there is a failure outside of rate limits
+                // fail the whole thing.
                 response.StatusCode.ThrowExceptionOnFailedCall();
             }
             var deserealisedResult = JsonSerializer.Deserialize<PropertyDetailsResponse>(content);

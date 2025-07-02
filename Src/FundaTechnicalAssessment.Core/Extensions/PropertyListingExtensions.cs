@@ -5,9 +5,9 @@ namespace FundaTechnicalAssessment.Core.Extensions
     public static class PropertyListingExtensions
     {
         private const int _topRankingNumber = 10;
-        public static IEnumerable<AgentPropertyGroup> GroupAgentsByPropertiesForSale(this IEnumerable<PropertyListingsDto> propertyListingsDto)
+        public static IEnumerable<AgentPropertyGroup> GroupAgentsByPropertiesForSale(this IEnumerable<PropertyListingsDto> propertyListingsDtos)
         {
-            return propertyListingsDto
+            return propertyListingsDtos
                 .GroupBy(x => new { x.AgentId, x.AgentName })                
                 .Select(y => new AgentPropertyGroup
                 {
